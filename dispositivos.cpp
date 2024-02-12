@@ -3,7 +3,11 @@
 
 #ifndef CAIO_DISPOSITIVOS_DEBUG
 #define  CAIO_DISPOSITIVOS_DEBUG
-#include "server2.cpp"
+#include <mem.h>
+#include <string>
+#include <map>
+#include <vector>
+#include <thread>
 
 std::vector<std::string>mensagensP;
 std::vector<std::string>mensagensC;
@@ -212,7 +216,7 @@ void rotina(void* f(),int tempo) {
    
  }
 
- class conex„o{
+ class conex√£o{
 
 
     public:
@@ -224,7 +228,7 @@ void rotina(void* f(),int tempo) {
     int statusServer;
     bool carregado;
 
-    conex„o(const char * dispositivo,const char * executavel,const char * porta) {
+    conex√£o(const char * dispositivo,const char * executavel,const char * porta) {
 
         memset(this, NULL, sizeof(this));
         carregado = true;
@@ -235,7 +239,7 @@ void rotina(void* f(),int tempo) {
        
      
     }
-    ~conex„o() {
+    ~conex√£o() {
 
         carregado = false;
     }
@@ -261,10 +265,10 @@ void rotina(void* f(),int tempo) {
    
 };
 
-class Impresora :public conex„o
+class Impresora :public conex√£o
 {
 public:
-    Impresora() : conex„o("impresora", "node app.js", "27016")
+    Impresora() : conex√£o("impresora", "node app.js", "27016")
     {
 
     }
@@ -278,11 +282,11 @@ public:
 
 };
 
-class banco_de_dados :public conex„o
+class banco_de_dados :public conex√£o
 {
    
 public:
-    banco_de_dados() : conex„o("banco de dados", "node db.js","2733")
+    banco_de_dados() : conex√£o("banco de dados", "node db.js","2733")
     {
 
 
@@ -292,10 +296,10 @@ public:
 
 };
 
-class IA_Praec : public conex„o{
+class IA_Praec : public conex√£o{
 
 public:
-    IA_Praec() : conex„o("PraecAi","node PraecAi.js","27017") {
+    IA_Praec() : conex√£o("PraecAi","node PraecAi.js","27017") {
     
     
     }
